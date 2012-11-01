@@ -11,5 +11,5 @@ require './model'
 require './api'
 
 Mongoid.load!('./mongoid.yml')
-Mongoid.logger = Moped.logger = Logger.new(STDOUT)
+# Mongoid.logger = Moped.logger = Logger.new(STDOUT)
 

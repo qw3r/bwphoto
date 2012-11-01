@@ -7,21 +7,24 @@ describe PhotoAPI do
     PhotoAPI
   end
 
+  before :each do
+    @photo = Photo.create! title: 'Sunset at Ricse', author: 'Istvan Demeter'
+  end
+  
   describe 'GET /api/v1/photos' do
     it "returns an empty array of photos" do
       get '/api/v1/photos'
       last_response.status.should == 200
-      JSON.parse(last_response.body).should == []
+      last_response.body.should == [@photo].to_json
     end
   end
 
   describe 'GET /api/v1/photos/:id' do
-    let(:photo) { Photo.create title: 'Sunset at Ricse' }
     
     it "returns a photo given a valid id" do
-      get "/api/v1/photos/#{photo.id}"
+      get "/api/v1/photos/#{@photo.id}"
       last_response.status.should == 200
-      last_response.body.should =~ photo.to_json
+      last_response.body.should 
     end
 
     it "returns an error given an invalid id" do

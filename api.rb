@@ -1,9 +1,12 @@
 class PhotoAPI < Grape::API
   prefix :api
   version 'v1', using: :path, vendor: 'bwphoto'
-  
   format :json
 
+  rescue_from Mongoid::Errors::DocumentNotFound do
+    Rack::Response.new(["Requested Document Not Found"], 404)
+  end
+  
   resource :photos do
     desc 'listing photos'
     get do
@@ -11,7 +14,7 @@ class PhotoAPI < Grape::API
     end
 
     desc 'show photo'
-    get :id do
+    get ':id' do
       Photo.find params[:id]
     end
 

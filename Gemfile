@@ -1,7 +1,8 @@
 source :gemcutter
 
-gem 'mongoid'
 gem 'grape'
+gem 'mongoid'
+gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 
 group :test do
   gem 'rspec'

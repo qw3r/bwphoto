@@ -20,7 +20,7 @@ class PhotoAPI < Grape::API
 
     desc 'create photo'
     post do
-      'not implemented yet'
+      Photo.create params[:photo]
     end
   end
 

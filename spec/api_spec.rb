@@ -8,7 +8,7 @@ describe PhotoAPI do
   end
 
   before :each do
-    @photo = Photo.create! title: 'Sunset at Ricse', author: 'Istvan Demeter'
+    @photo = Photo.create! title: 'Sunset at Ricse', author: 'Istvan Demeter', camera: 'Sony SLT'
   end
   
   describe 'GET /api/v1/photos' do
@@ -28,12 +28,19 @@ describe PhotoAPI do
     end
 
     it "returns an error given an invalid id" do
-      get "/api/v1/photos/notexistingid"
+      get "/api/v1/photos/aninvalidid"
       last_response.status.should == 404
     end
   end
 
-  describe '#create' do
-    pending
+  describe 'POST /api/v1/photos' do
+    context 'using url' do
+    end
+
+    context 'using base64' do
+    end
+
+    context 'with invalid attributes' do
+    end
   end
 end

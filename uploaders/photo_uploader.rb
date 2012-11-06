@@ -1,3 +1,3 @@
 class PhotoUploader < CarrierWave::Uploader::Base
-  storage :grid_fs
+  storage :file
 end

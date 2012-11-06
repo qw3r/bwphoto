@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] ||= 'test'
 
-require './environment'
+require './config/environment'
 require 'rack/test'
 require 'database_cleaner'
 
